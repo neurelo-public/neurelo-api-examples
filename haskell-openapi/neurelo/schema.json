@@ -1,0 +1,28 @@
+{
+  "objects": {
+    "user": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "passwordhash": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "unique": true
+        },
+        "id": {
+          "type": "string",
+          "identifier": true,
+          "sourceName": "_id",
+          "sourceType": "ObjectId",
+          "default": {
+            "function": "auto"
+          }
+        }
+      }
+    }
+  }
+}

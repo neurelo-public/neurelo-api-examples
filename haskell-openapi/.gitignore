@@ -1,0 +1,4 @@
+.stack-work/
+*~
+.env
+client_session_key.aes
