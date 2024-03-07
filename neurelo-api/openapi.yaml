@@ -1,0 +1,1910 @@
+openapi: 3.0.3
+info:
+  title: Neurelo API Spec
+  version: "0"
+servers:
+- url: https://us-east-2.aws.neurelo.dev
+- url: https://us-west-2.aws.neurelo.dev
+security:
+- ApiKey: []
+paths:
+  /rest/user:
+    delete:
+      description: Delete multiple user records
+      operationId: deleteUser
+      parameters:
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userWhereInput'
+        in: query
+        name: filter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createManyUser_201_response'
+          description: Records deleted
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+    get:
+      description: Retrieve multiple user records
+      operationId: findUser
+      parameters:
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSelectInput'
+        in: query
+        name: select
+        required: false
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userWhereInput'
+        in: query
+        name: filter
+        required: false
+      - content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/userOrderByWithRelationInput'
+              type: array
+        in: query
+        name: order_by
+        required: false
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          minimum: 0.0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: take
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_200_response'
+          description: Results found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+    patch:
+      description: Update multiple user records
+      operationId: updateUser
+      parameters:
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userWhereInput'
+        in: query
+        name: filter
+        required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userUpdateManyInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createManyUser_201_response'
+          description: Records updated
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+    post:
+      description: Create multiple user records
+      operationId: createManyUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/userCreateManyInput'
+              minItems: 1
+              type: array
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createManyUser_201_response'
+          description: Records created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+  /rest/user/__aggregate:
+    get:
+      description: Aggregate by user
+      operationId: aggregateByUser
+      parameters:
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAggregateInput'
+        in: query
+        name: select
+        required: true
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userWhereInput'
+        in: query
+        name: filter
+        required: false
+      - content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/userOrderByWithRelationInput'
+              type: array
+        in: query
+        name: order_by
+        required: false
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          minimum: 0.0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: take
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/aggregateByUser_200_response'
+          description: Results found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+  /rest/user/__groupBy:
+    get:
+      description: Group by user
+      operationId: groupByUser
+      parameters:
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserGroupByInput'
+        in: query
+        name: select
+        required: true
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userWhereInput'
+        in: query
+        name: filter
+        required: false
+      - content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/userOrderByWithAggregationInput'
+              type: array
+        in: query
+        name: order_by
+        required: false
+      - content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/UserScalarFieldEnum'
+              type: array
+        in: query
+        name: group_by
+        required: false
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userScalarWhereWithAggregatesInput'
+        in: query
+        name: having
+        required: false
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          minimum: 0.0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: take
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupByUser_200_response'
+          description: Results found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+  /rest/user/__one:
+    post:
+      description: Create one user record
+      operationId: createOneUser
+      parameters:
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSelectInput'
+        in: query
+        name: select
+        required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userCreateInput'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createOneUser_201_response'
+          description: Record created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+  /rest/user/email/{value}:
+    delete:
+      description: Delete one user record by email
+      operationId: deleteUserByEmail
+      parameters:
+      - explode: false
+        in: path
+        name: value
+        required: true
+        schema:
+          type: string
+        style: simple
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSelectInput'
+        in: query
+        name: select
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createOneUser_201_response'
+          description: Record deleted
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+    get:
+      description: Find one user record by email
+      operationId: findUserByEmail
+      parameters:
+      - explode: false
+        in: path
+        name: value
+        required: true
+        schema:
+          type: string
+        style: simple
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSelectInput'
+        in: query
+        name: select
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createOneUser_201_response'
+          description: Results found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+    patch:
+      description: Update one user record by email
+      operationId: updateUserByEmail
+      parameters:
+      - explode: false
+        in: path
+        name: value
+        required: true
+        schema:
+          type: string
+        style: simple
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSelectInput'
+        in: query
+        name: select
+        required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userUpdateInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createOneUser_201_response'
+          description: Record updated
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+  /rest/user/{value}:
+    delete:
+      description: Delete one user record by id
+      operationId: deleteUserById
+      parameters:
+      - explode: false
+        in: path
+        name: value
+        required: true
+        schema:
+          type: string
+        style: simple
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSelectInput'
+        in: query
+        name: select
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createOneUser_201_response'
+          description: Record deleted
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+    get:
+      description: Find one user record by id
+      operationId: findUserById
+      parameters:
+      - explode: false
+        in: path
+        name: value
+        required: true
+        schema:
+          type: string
+        style: simple
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSelectInput'
+        in: query
+        name: select
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createOneUser_201_response'
+          description: Results found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+    patch:
+      description: Update one user record by id
+      operationId: updateUserById
+      parameters:
+      - explode: false
+        in: path
+        name: value
+        required: true
+        schema:
+          type: string
+        style: simple
+      - content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSelectInput'
+        in: query
+        name: select
+        required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userUpdateInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createOneUser_201_response'
+          description: Record updated
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Invalid Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Not Found
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findUser_400_response'
+          description: Timed Out
+      tags:
+      - User
+components:
+  schemas:
+    AffectedRowsOutput:
+      additionalProperties: false
+      example:
+        count: 0
+      properties:
+        count:
+          format: int32
+          type: integer
+      type: object
+    AggregateUser:
+      additionalProperties: false
+      example:
+        _count:
+          name: 5
+          id: 1
+          passwordhash: 5
+          _all: 0
+          email: 6
+        _max:
+          name: name
+          id: id
+          passwordhash: passwordhash
+          email: email
+        _min:
+          name: name
+          id: id
+          passwordhash: passwordhash
+          email: email
+      properties:
+        _count:
+          $ref: '#/components/schemas/UserCountAggregateOutputType'
+        _max:
+          $ref: '#/components/schemas/UserMaxAggregateOutputType'
+        _min:
+          $ref: '#/components/schemas/UserMinAggregateOutputType'
+      type: object
+    NestedIntFilter:
+      additionalProperties: false
+      properties:
+        eq:
+          format: int32
+          type: integer
+        equals:
+          format: int32
+          type: integer
+        gt:
+          format: int32
+          type: integer
+        gte:
+          format: int32
+          type: integer
+        in:
+          items:
+            format: int32
+            type: integer
+          type: array
+        lt:
+          format: int32
+          type: integer
+        lte:
+          format: int32
+          type: integer
+        not:
+          $ref: '#/components/schemas/NestedIntFilter_not'
+        notIn:
+          items:
+            format: int32
+            type: integer
+          type: array
+      type: object
+    NestedIntNullableFilter:
+      additionalProperties: false
+      properties:
+        eq:
+          format: int32
+          nullable: true
+          type: integer
+        equals:
+          format: int32
+          nullable: true
+          type: integer
+        gt:
+          format: int32
+          type: integer
+        gte:
+          format: int32
+          type: integer
+        in:
+          items:
+            format: int32
+            nullable: true
+            type: integer
+          type: array
+        isSet:
+          type: boolean
+        lt:
+          format: int32
+          type: integer
+        lte:
+          format: int32
+          type: integer
+        not:
+          $ref: '#/components/schemas/NestedIntNullableFilter_not'
+        notIn:
+          items:
+            format: int32
+            nullable: true
+            type: integer
+          type: array
+      type: object
+    NestedStringFilter:
+      additionalProperties: false
+      properties:
+        contains:
+          type: string
+        endsWith:
+          type: string
+        eq:
+          type: string
+        equals:
+          type: string
+        gt:
+          type: string
+        gte:
+          type: string
+        in:
+          items:
+            type: string
+          type: array
+        lt:
+          type: string
+        lte:
+          type: string
+        not:
+          $ref: '#/components/schemas/NestedStringFilter_not'
+        notIn:
+          items:
+            type: string
+          type: array
+        startsWith:
+          type: string
+      type: object
+    NestedStringNullableFilter:
+      additionalProperties: false
+      properties:
+        contains:
+          type: string
+        endsWith:
+          type: string
+        eq:
+          nullable: true
+          type: string
+        equals:
+          nullable: true
+          type: string
+        gt:
+          type: string
+        gte:
+          type: string
+        in:
+          items:
+            nullable: true
+            type: string
+          type: array
+        isSet:
+          type: boolean
+        lt:
+          type: string
+        lte:
+          type: string
+        not:
+          $ref: '#/components/schemas/NestedStringNullableFilter_not'
+        notIn:
+          items:
+            nullable: true
+            type: string
+          type: array
+        startsWith:
+          type: string
+      type: object
+    NestedStringNullableWithAggregatesFilter:
+      additionalProperties: false
+      properties:
+        _count:
+          $ref: '#/components/schemas/NestedIntNullableFilter'
+        _max:
+          $ref: '#/components/schemas/NestedStringNullableFilter'
+        _min:
+          $ref: '#/components/schemas/NestedStringNullableFilter'
+        contains:
+          type: string
+        endsWith:
+          type: string
+        eq:
+          nullable: true
+          type: string
+        equals:
+          nullable: true
+          type: string
+        gt:
+          type: string
+        gte:
+          type: string
+        in:
+          items:
+            nullable: true
+            type: string
+          type: array
+        isSet:
+          type: boolean
+        lt:
+          type: string
+        lte:
+          type: string
+        not:
+          $ref: '#/components/schemas/NestedStringNullableWithAggregatesFilter_not'
+        notIn:
+          items:
+            nullable: true
+            type: string
+          type: array
+        startsWith:
+          type: string
+      type: object
+    NestedStringWithAggregatesFilter:
+      additionalProperties: false
+      properties:
+        _count:
+          $ref: '#/components/schemas/NestedIntFilter'
+        _max:
+          $ref: '#/components/schemas/NestedStringFilter'
+        _min:
+          $ref: '#/components/schemas/NestedStringFilter'
+        contains:
+          type: string
+        endsWith:
+          type: string
+        eq:
+          type: string
+        equals:
+          type: string
+        gt:
+          type: string
+        gte:
+          type: string
+        in:
+          items:
+            type: string
+          type: array
+        lt:
+          type: string
+        lte:
+          type: string
+        not:
+          $ref: '#/components/schemas/NestedStringWithAggregatesFilter_not'
+        notIn:
+          items:
+            type: string
+          type: array
+        startsWith:
+          type: string
+      type: object
+    NullableStringFieldUpdateOperationsInput:
+      additionalProperties: false
+      properties:
+        set:
+          nullable: true
+          type: string
+        unset:
+          type: boolean
+      type: object
+    QueryMode:
+      enum:
+      - default
+      - insensitive
+      type: string
+    SortOrder:
+      enum:
+      - asc
+      - desc
+      type: string
+    StringFieldUpdateOperationsInput:
+      additionalProperties: false
+      properties:
+        set:
+          type: string
+      type: object
+    StringFilter:
+      additionalProperties: false
+      properties:
+        contains:
+          type: string
+        endsWith:
+          type: string
+        eq:
+          type: string
+        equals:
+          type: string
+        gt:
+          type: string
+        gte:
+          type: string
+        in:
+          items:
+            type: string
+          type: array
+        lt:
+          type: string
+        lte:
+          type: string
+        mode:
+          $ref: '#/components/schemas/QueryMode'
+        not:
+          $ref: '#/components/schemas/NestedStringFilter_not'
+        notIn:
+          items:
+            type: string
+          type: array
+        startsWith:
+          type: string
+      type: object
+    StringNullableFilter:
+      additionalProperties: false
+      properties:
+        contains:
+          type: string
+        endsWith:
+          type: string
+        eq:
+          nullable: true
+          type: string
+        equals:
+          nullable: true
+          type: string
+        gt:
+          type: string
+        gte:
+          type: string
+        in:
+          items:
+            nullable: true
+            type: string
+          type: array
+        isSet:
+          type: boolean
+        lt:
+          type: string
+        lte:
+          type: string
+        mode:
+          $ref: '#/components/schemas/QueryMode'
+        not:
+          $ref: '#/components/schemas/NestedStringNullableFilter_not'
+        notIn:
+          items:
+            nullable: true
+            type: string
+          type: array
+        startsWith:
+          type: string
+      type: object
+    StringNullableWithAggregatesFilter:
+      additionalProperties: false
+      properties:
+        _count:
+          $ref: '#/components/schemas/NestedIntNullableFilter'
+        _max:
+          $ref: '#/components/schemas/NestedStringNullableFilter'
+        _min:
+          $ref: '#/components/schemas/NestedStringNullableFilter'
+        contains:
+          type: string
+        endsWith:
+          type: string
+        eq:
+          nullable: true
+          type: string
+        equals:
+          nullable: true
+          type: string
+        gt:
+          type: string
+        gte:
+          type: string
+        in:
+          items:
+            nullable: true
+            type: string
+          type: array
+        isSet:
+          type: boolean
+        lt:
+          type: string
+        lte:
+          type: string
+        mode:
+          $ref: '#/components/schemas/QueryMode'
+        not:
+          $ref: '#/components/schemas/NestedStringNullableWithAggregatesFilter_not'
+        notIn:
+          items:
+            nullable: true
+            type: string
+          type: array
+        startsWith:
+          type: string
+      type: object
+    StringWithAggregatesFilter:
+      additionalProperties: false
+      properties:
+        _count:
+          $ref: '#/components/schemas/NestedIntFilter'
+        _max:
+          $ref: '#/components/schemas/NestedStringFilter'
+        _min:
+          $ref: '#/components/schemas/NestedStringFilter'
+        contains:
+          type: string
+        endsWith:
+          type: string
+        eq:
+          type: string
+        equals:
+          type: string
+        gt:
+          type: string
+        gte:
+          type: string
+        in:
+          items:
+            type: string
+          type: array
+        lt:
+          type: string
+        lte:
+          type: string
+        mode:
+          $ref: '#/components/schemas/QueryMode'
+        not:
+          $ref: '#/components/schemas/NestedStringWithAggregatesFilter_not'
+        notIn:
+          items:
+            type: string
+          type: array
+        startsWith:
+          type: string
+      type: object
+    UserAggregateInput:
+      additionalProperties: false
+      minProperties: 1
+      properties:
+        _count:
+          items:
+            enum:
+            - _all
+            - email
+            - id
+            - name
+            - passwordhash
+            type: string
+          minItems: 1
+          type: array
+        _max:
+          items:
+            enum:
+            - email
+            - id
+            - name
+            - passwordhash
+            type: string
+          minItems: 1
+          type: array
+        _min:
+          items:
+            enum:
+            - email
+            - id
+            - name
+            - passwordhash
+            type: string
+          minItems: 1
+          type: array
+      type: object
+    UserCountAggregateOutputType:
+      additionalProperties: false
+      example:
+        name: 5
+        id: 1
+        passwordhash: 5
+        _all: 0
+        email: 6
+      properties:
+        _all:
+          format: int32
+          type: integer
+        email:
+          format: int32
+          type: integer
+        id:
+          format: int32
+          type: integer
+        name:
+          format: int32
+          type: integer
+        passwordhash:
+          format: int32
+          type: integer
+      type: object
+    UserGroupByInput:
+      additionalProperties: false
+      minProperties: 1
+      properties:
+        _count:
+          items:
+            enum:
+            - _all
+            - email
+            - id
+            - name
+            - passwordhash
+            type: string
+          minItems: 1
+          type: array
+        _max:
+          items:
+            enum:
+            - email
+            - id
+            - name
+            - passwordhash
+            type: string
+          minItems: 1
+          type: array
+        _min:
+          items:
+            enum:
+            - email
+            - id
+            - name
+            - passwordhash
+            type: string
+          minItems: 1
+          type: array
+        email:
+          type: boolean
+        id:
+          type: boolean
+        name:
+          type: boolean
+        passwordhash:
+          type: boolean
+      type: object
+    UserGroupByOutputType:
+      additionalProperties: false
+      example:
+        _count:
+          name: 5
+          id: 1
+          passwordhash: 5
+          _all: 0
+          email: 6
+        name: name
+        _max:
+          name: name
+          id: id
+          passwordhash: passwordhash
+          email: email
+        id: id
+        passwordhash: passwordhash
+        email: email
+        _min:
+          name: name
+          id: id
+          passwordhash: passwordhash
+          email: email
+      properties:
+        _count:
+          $ref: '#/components/schemas/UserCountAggregateOutputType'
+        _max:
+          $ref: '#/components/schemas/UserMaxAggregateOutputType'
+        _min:
+          $ref: '#/components/schemas/UserMinAggregateOutputType'
+        email:
+          type: string
+        id:
+          type: string
+        name:
+          nullable: true
+          type: string
+        passwordhash:
+          type: string
+      type: object
+    UserMaxAggregateOutputType:
+      additionalProperties: false
+      example:
+        name: name
+        id: id
+        passwordhash: passwordhash
+        email: email
+      properties:
+        email:
+          nullable: true
+          type: string
+        id:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        passwordhash:
+          nullable: true
+          type: string
+      type: object
+    UserMinAggregateOutputType:
+      additionalProperties: false
+      example:
+        name: name
+        id: id
+        passwordhash: passwordhash
+        email: email
+      properties:
+        email:
+          nullable: true
+          type: string
+        id:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        passwordhash:
+          nullable: true
+          type: string
+      type: object
+    UserScalarFieldEnum:
+      enum:
+      - email
+      - id
+      - name
+      - passwordhash
+      type: string
+    UserSelectInput:
+      additionalProperties: false
+      properties:
+        $related:
+          type: boolean
+        $scalars:
+          type: boolean
+        email:
+          type: boolean
+        id:
+          type: boolean
+        name:
+          type: boolean
+        passwordhash:
+          type: boolean
+      type: object
+    _ErrorResponse:
+      example:
+        details: "{}"
+        error: error
+      properties:
+        details:
+          type: object
+        error:
+          type: string
+      required:
+      - error
+      type: object
+    user:
+      additionalProperties: false
+      example:
+        name: name
+        id: id
+        passwordhash: passwordhash
+        email: email
+      properties:
+        email:
+          type: string
+        id:
+          type: string
+        name:
+          nullable: true
+          type: string
+        passwordhash:
+          type: string
+      type: object
+    userCountOrderByAggregateInput:
+      additionalProperties: false
+      properties:
+        email:
+          $ref: '#/components/schemas/SortOrder'
+        id:
+          $ref: '#/components/schemas/SortOrder'
+        name:
+          $ref: '#/components/schemas/SortOrder'
+        passwordhash:
+          $ref: '#/components/schemas/SortOrder'
+      type: object
+    userCreateInput:
+      additionalProperties: false
+      properties:
+        email:
+          type: string
+        id:
+          type: string
+        name:
+          nullable: true
+          type: string
+        passwordhash:
+          type: string
+      required:
+      - email
+      - passwordhash
+      type: object
+    userCreateManyInput:
+      additionalProperties: false
+      properties:
+        email:
+          type: string
+        id:
+          type: string
+        name:
+          nullable: true
+          type: string
+        passwordhash:
+          type: string
+      required:
+      - email
+      - passwordhash
+      type: object
+    userMaxOrderByAggregateInput:
+      additionalProperties: false
+      properties:
+        email:
+          $ref: '#/components/schemas/SortOrder'
+        id:
+          $ref: '#/components/schemas/SortOrder'
+        name:
+          $ref: '#/components/schemas/SortOrder'
+        passwordhash:
+          $ref: '#/components/schemas/SortOrder'
+      type: object
+    userMinOrderByAggregateInput:
+      additionalProperties: false
+      properties:
+        email:
+          $ref: '#/components/schemas/SortOrder'
+        id:
+          $ref: '#/components/schemas/SortOrder'
+        name:
+          $ref: '#/components/schemas/SortOrder'
+        passwordhash:
+          $ref: '#/components/schemas/SortOrder'
+      type: object
+    userOrderByWithAggregationInput:
+      additionalProperties: false
+      properties:
+        _count:
+          $ref: '#/components/schemas/userCountOrderByAggregateInput'
+        _max:
+          $ref: '#/components/schemas/userMaxOrderByAggregateInput'
+        _min:
+          $ref: '#/components/schemas/userMinOrderByAggregateInput'
+        email:
+          $ref: '#/components/schemas/SortOrder'
+        id:
+          $ref: '#/components/schemas/SortOrder'
+        name:
+          $ref: '#/components/schemas/SortOrder'
+        passwordhash:
+          $ref: '#/components/schemas/SortOrder'
+      type: object
+    userOrderByWithRelationInput:
+      additionalProperties: false
+      properties:
+        email:
+          $ref: '#/components/schemas/SortOrder'
+        id:
+          $ref: '#/components/schemas/SortOrder'
+        name:
+          $ref: '#/components/schemas/SortOrder'
+        passwordhash:
+          $ref: '#/components/schemas/SortOrder'
+      type: object
+    userScalarWhereWithAggregatesInput:
+      additionalProperties: false
+      properties:
+        AND:
+          $ref: '#/components/schemas/userScalarWhereWithAggregatesInput_AND'
+        NOT:
+          $ref: '#/components/schemas/userScalarWhereWithAggregatesInput_AND'
+        OR:
+          items:
+            $ref: '#/components/schemas/userScalarWhereWithAggregatesInput'
+          type: array
+        email:
+          $ref: '#/components/schemas/userScalarWhereWithAggregatesInput_email'
+        id:
+          $ref: '#/components/schemas/userScalarWhereWithAggregatesInput_email'
+        name:
+          $ref: '#/components/schemas/userScalarWhereWithAggregatesInput_name'
+        passwordhash:
+          $ref: '#/components/schemas/userScalarWhereWithAggregatesInput_email'
+      type: object
+    userUpdateInput:
+      additionalProperties: false
+      properties:
+        email:
+          $ref: '#/components/schemas/userUpdateInput_email'
+        name:
+          $ref: '#/components/schemas/userUpdateInput_name'
+        passwordhash:
+          $ref: '#/components/schemas/userUpdateInput_email'
+      type: object
+    userUpdateManyInput:
+      additionalProperties: false
+      properties:
+        email:
+          $ref: '#/components/schemas/userUpdateInput_email'
+        name:
+          $ref: '#/components/schemas/userUpdateInput_name'
+        passwordhash:
+          $ref: '#/components/schemas/userUpdateInput_email'
+      type: object
+    userWhereInput:
+      additionalProperties: false
+      properties:
+        AND:
+          $ref: '#/components/schemas/userWhereInput_AND'
+        NOT:
+          $ref: '#/components/schemas/userWhereInput_AND'
+        OR:
+          items:
+            $ref: '#/components/schemas/userWhereInput'
+          type: array
+        email:
+          $ref: '#/components/schemas/userWhereInput_email'
+        id:
+          $ref: '#/components/schemas/userWhereInput_email'
+        name:
+          $ref: '#/components/schemas/userWhereInput_name'
+        passwordhash:
+          $ref: '#/components/schemas/userWhereInput_email'
+      type: object
+    userWhereUniqueInput:
+      additionalProperties: false
+      properties:
+        email:
+          type: string
+        id:
+          type: string
+      type: object
+    findUser_200_response:
+      example:
+        data:
+        - name: name
+          id: id
+          passwordhash: passwordhash
+          email: email
+        - name: name
+          id: id
+          passwordhash: passwordhash
+          email: email
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/user'
+          type: array
+      required:
+      - data
+      type: object
+    findUser_400_response:
+      example:
+        errors:
+        - details: "{}"
+          error: error
+        - details: "{}"
+          error: error
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/_ErrorResponse'
+          type: array
+      required:
+      - errors
+      type: object
+    createManyUser_201_response:
+      example:
+        data:
+          count: 0
+      properties:
+        data:
+          $ref: '#/components/schemas/AffectedRowsOutput'
+      required:
+      - data
+      type: object
+    aggregateByUser_200_response:
+      example:
+        data:
+          _count:
+            name: 5
+            id: 1
+            passwordhash: 5
+            _all: 0
+            email: 6
+          _max:
+            name: name
+            id: id
+            passwordhash: passwordhash
+            email: email
+          _min:
+            name: name
+            id: id
+            passwordhash: passwordhash
+            email: email
+      properties:
+        data:
+          $ref: '#/components/schemas/AggregateUser'
+      required:
+      - data
+      type: object
+    groupByUser_200_response:
+      example:
+        data:
+        - _count:
+            name: 5
+            id: 1
+            passwordhash: 5
+            _all: 0
+            email: 6
+          name: name
+          _max:
+            name: name
+            id: id
+            passwordhash: passwordhash
+            email: email
+          id: id
+          passwordhash: passwordhash
+          email: email
+          _min:
+            name: name
+            id: id
+            passwordhash: passwordhash
+            email: email
+        - _count:
+            name: 5
+            id: 1
+            passwordhash: 5
+            _all: 0
+            email: 6
+          name: name
+          _max:
+            name: name
+            id: id
+            passwordhash: passwordhash
+            email: email
+          id: id
+          passwordhash: passwordhash
+          email: email
+          _min:
+            name: name
+            id: id
+            passwordhash: passwordhash
+            email: email
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/UserGroupByOutputType'
+          type: array
+      required:
+      - data
+      type: object
+    createOneUser_201_response:
+      example:
+        data:
+          name: name
+          id: id
+          passwordhash: passwordhash
+          email: email
+      properties:
+        data:
+          $ref: '#/components/schemas/user'
+      required:
+      - data
+      type: object
+    NestedIntFilter_not:
+      oneOf:
+      - format: int32
+        type: integer
+      - $ref: '#/components/schemas/NestedIntFilter'
+    NestedIntNullableFilter_not:
+      nullable: true
+      oneOf:
+      - format: int32
+        nullable: true
+        type: integer
+      - $ref: '#/components/schemas/NestedIntNullableFilter'
+    NestedStringFilter_not:
+      oneOf:
+      - type: string
+      - $ref: '#/components/schemas/NestedStringFilter'
+    NestedStringNullableFilter_not:
+      nullable: true
+      oneOf:
+      - nullable: true
+        type: string
+      - $ref: '#/components/schemas/NestedStringNullableFilter'
+    NestedStringNullableWithAggregatesFilter_not:
+      nullable: true
+      oneOf:
+      - nullable: true
+        type: string
+      - $ref: '#/components/schemas/NestedStringNullableWithAggregatesFilter'
+    NestedStringWithAggregatesFilter_not:
+      oneOf:
+      - type: string
+      - $ref: '#/components/schemas/NestedStringWithAggregatesFilter'
+    userScalarWhereWithAggregatesInput_AND:
+      oneOf:
+      - $ref: '#/components/schemas/userScalarWhereWithAggregatesInput'
+      - items:
+          $ref: '#/components/schemas/userScalarWhereWithAggregatesInput'
+        type: array
+    userScalarWhereWithAggregatesInput_email:
+      oneOf:
+      - $ref: '#/components/schemas/StringWithAggregatesFilter'
+      - type: string
+    userScalarWhereWithAggregatesInput_name:
+      nullable: true
+      oneOf:
+      - $ref: '#/components/schemas/StringNullableWithAggregatesFilter'
+      - nullable: true
+        type: string
+    userUpdateInput_email:
+      oneOf:
+      - type: string
+      - $ref: '#/components/schemas/StringFieldUpdateOperationsInput'
+    userUpdateInput_name:
+      nullable: true
+      oneOf:
+      - nullable: true
+        type: string
+      - $ref: '#/components/schemas/NullableStringFieldUpdateOperationsInput'
+    userWhereInput_AND:
+      oneOf:
+      - $ref: '#/components/schemas/userWhereInput'
+      - items:
+          $ref: '#/components/schemas/userWhereInput'
+        type: array
+    userWhereInput_email:
+      oneOf:
+      - $ref: '#/components/schemas/StringFilter'
+      - type: string
+    userWhereInput_name:
+      nullable: true
+      oneOf:
+      - $ref: '#/components/schemas/StringNullableFilter'
+      - nullable: true
+        type: string
+  securitySchemes:
+    ApiKey:
+      description: Authorization token
+      in: header
+      name: X-API-KEY
+      type: apiKey
