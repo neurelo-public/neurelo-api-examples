@@ -8,3 +8,4 @@ This repository contains usage examples for Neurelo APIs. For examples for our S
 | -------- | ------- | ----------------------------------- |
 | Haskell  | OpenAPI | [haskell-openapi](/haskell-openapi) |
 | PHP      | Guzzle  | [php-vanilla](/php/vanilla)         |
+| Rust     | REST    | [rust-rest-api](/rust-rest-api)     |
