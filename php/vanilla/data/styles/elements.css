@@ -1,0 +1,126 @@
+
+.app-icon {
+    height: 32px;
+    width: 140px;
+}
+
+.app-header {
+    width: 100%;
+    background-color: var(--stone-950);
+    border-bottom: 1px solid var(--stone-800);
+    padding: 1rem 2rem;
+}
+
+/* Code block */
+.code-block {
+    background-color: var(--slate-950);
+    box-shadow: 0 0 0 1px var(--cyan-500);
+    color: var(--lime-500);
+    font-size: 14px;
+    line-height: 18px;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: var(--font-mono);
+    height: fit-content;
+    flex-shrink: 0;
+
+    /* white-space: initial; */
+    text-wrap: balance;
+}
+
+.code-block-container {
+    height: calc(100vh - 13rem);
+    padding: 0.75rem;
+    margin: 1rem auto;
+    background-color: var(--slate-950);
+    box-shadow: 0 0 0 1px var(--cyan-800);
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    place-content: flex-start;
+}
+
+/* Tag */
+.tag {
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    line-height: 1;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    color: var(--sky-100);
+    background-color: var(--sky-950);
+    border: 1px solid var(--sky-700);
+    white-space: nowrap;
+}
+
+.max-container {
+    width: 100%;
+    max-width: calc(100vw - 2rem);
+
+    @media (min-width: 768px) {
+        max-width: 768px;
+    }
+
+    @media (min-width: 1024px) {
+        max-width: 1024px;
+    }
+
+    @media (min-width: 1280px) {
+        max-width: 1280px;
+    }
+}
+
+.card-container {
+    padding: 0.75rem;
+    width: calc(100% / 3);
+    display: flex;
+    flex-direction: column;
+}
+.card {
+    flex: 1;
+    padding: 12px;
+    transition: none;
+    text-decoration: none;
+    background-image: linear-gradient(
+        145deg,
+        var(--stone-900) 0%,
+        var(--stone-950) 100%
+    );
+    border: 1px solid var(--stone-700);
+
+    &:hover {
+        border-color: var(--stone-500);
+    }
+
+    &:focus-visible {
+        outline: none;
+        background-color: transparent;
+    }
+}
+
+form {
+
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+
+        label {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--stone-100);
+        }
+
+        input, textarea {
+            width: 100%;
+            font-size: 14px;
+        }
+    }
+}
