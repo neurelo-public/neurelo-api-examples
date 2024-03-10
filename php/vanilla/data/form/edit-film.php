@@ -66,7 +66,7 @@
 
     <div class="max-container mx-auto p-4 flex flex-row items-center justify-between gap-2">
         <h1 class="text-xl font-semibold text-white py-2 text-center">Edit Film</h1>
-        <p class="text-md font-normal text-slate-300 py-2 text-center">ID: <?php echo $id ?></p>
+        <p class="text-md font-normal text-zinc-300 py-2 text-center">ID: <?php echo $id ?></p>
     </div>
 
     <?php

@@ -13,6 +13,16 @@ html * {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* html::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+} */
+
 a {
     padding: 1px 2px;
     border-radius: 4px;
@@ -27,7 +37,11 @@ a, button, input, select, textarea {
 }
 
 html {
-    background-color: var(--slate-950);
+    background-color: hsla(229, 84%, 5%, 0.448);
+    background-image:  radial-gradient(var(--cyan-500) 0.7000000000000001px, transparent 0.7000000000000001px), radial-gradient(var(--cyan-500) 0.7000000000000001px, hsl(229, 84%, 5%) 0.7000000000000001px);
+    background-size: 28px 28px;
+    background-position: 0 0,14px 14px;
+    background-blend-mode: multiply;
     color: var(--cyan-500);
     padding: 10px;
     width: 100%;
@@ -41,7 +55,7 @@ html {
 }
 
 body {
-    background-color: var(--slate-950);
+    /* background-color: var(--zinc-950); */
     color: var(--cyan-500);
     padding: 0px;
     width: 100%;
@@ -49,16 +63,6 @@ body {
     min-height: 100vh;
     max-width: 100vw;
     position: relative;
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: var(--slate-950);
-    color: var(--cyan-500);
 }
 
 input[type="text"],
@@ -74,7 +78,7 @@ textarea {
     border: 1px solid;
     border-radius: 8px;
     border-color: var(--cyan-500);
-    background-color: var(--slate-900);
+    background-color: var(--zinc-900);
     color: var(--cyan-200);
     transition: all 200ms ease;
 
@@ -121,7 +125,7 @@ button {
 /* Custom scrollbar */
 * {
     scrollbar-width: thin;
-    scrollbar-color: var(--cyan-600) var(--slate-950);
+    scrollbar-color: var(--cyan-600) var(--zinc-950);
   
     ::-webkit-scrollbar {
       width: 8px;

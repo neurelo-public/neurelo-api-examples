@@ -139,22 +139,22 @@
 
 /* Text Colors */
 .text-white {
-    color: var(--slate-100);
+    color: var(--zinc-100);
 }
 .text-black {
-    color: var(--slate-950);
+    color: var(--zinc-950);
 }
-.text-slate-100 {
-    color: var(--slate-100);
+.text-zinc-100 {
+    color: var(--zinc-100);
 }
-.text-slate-200 {
-    color: var(--slate-200);
+.text-zinc-200 {
+    color: var(--zinc-200);
 }
-.text-slate-300 {
-    color: var(--slate-300);
+.text-zinc-300 {
+    color: var(--zinc-300);
 }
-.text-slate-400 {
-    color: var(--slate-400);
+.text-zinc-400 {
+    color: var(--zinc-400);
 }
 .text-red-500 {
     color: var(--red-500);
@@ -162,10 +162,10 @@
 
 /* Background Colors */
 .bg-black {
-    background-color: var(--slate-950);
+    background-color: var(--zinc-950);
 }
 .bg-white {
-    background-color: var(--slate-100);
+    background-color: var(--zinc-100);
 }
 
 /* Padding */

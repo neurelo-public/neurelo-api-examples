@@ -1,4 +1,4 @@
-<footer>
+<footer class="app-footer">
     <div class="w-full flex items-center justify-center gap-1">
         <p>PHP-NGINX</p>
         <span> | </span>

@@ -6,14 +6,25 @@
 
 .app-header {
     width: 100%;
-    background-color: var(--stone-950);
-    border-bottom: 1px solid var(--stone-800);
+    background-color: var(--zinc-950);
+    border-bottom: 1px solid var(--zinc-800);
     padding: 1rem 2rem;
+}
+
+.app-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--zinc-950);
+    border-top: 1px solid var(--zinc-900);
+    color: var(--cyan-500);
 }
 
 /* Code block */
 .code-block {
-    background-color: var(--slate-950);
+    background-color: var(--zinc-950);
     box-shadow: 0 0 0 1px var(--cyan-500);
     color: var(--lime-500);
     font-size: 14px;
@@ -35,7 +46,7 @@
     height: calc(100vh - 13rem);
     padding: 0.75rem;
     margin: 1rem auto;
-    background-color: var(--slate-950);
+    background-color: var(--zinc-950);
     box-shadow: 0 0 0 1px var(--cyan-800);
     border-radius: 8px;
 
@@ -90,13 +101,14 @@
     text-decoration: none;
     background-image: linear-gradient(
         145deg,
-        var(--stone-900) 0%,
-        var(--stone-950) 100%
+        var(--zinc-900) 0%,
+        var(--zinc-950) 100%
     );
-    border: 1px solid var(--stone-700);
+    border: 1px solid var(--zinc-700);
+    border-radius: 8px;
 
     &:hover {
-        border-color: var(--stone-500);
+        border-color: var(--zinc-500);
     }
 
     &:focus-visible {
@@ -115,7 +127,7 @@ form {
         label {
             font-size: 12px;
             font-weight: 500;
-            color: var(--stone-100);
+            color: var(--zinc-100);
         }
 
         input, textarea {

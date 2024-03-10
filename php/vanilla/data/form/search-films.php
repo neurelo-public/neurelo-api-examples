@@ -82,14 +82,14 @@ if (is_null($response->content)) {
                         <h4 class='text-white text-lg font-medium'>:title</h4>
                     </div>
                     <div class='w-full flex flex-col gap-1'>
-                        <p class='text-slate-200 w-full text-md font-normal text-overflow-ellipses'>:description</p>
+                        <p class='text-zinc-200 w-full text-md font-normal text-overflow-ellipses'>:description</p>
                     </div>
                     <div class='w-full flex justify-between items-center gap-1'>
                         <div class='w-full flex justify-start items-center gap-2 mt-2'>
-                            <h3 class='text-slate-400 text-sm font-semibold font-sans text-uppercase'>Release Year:</h3>
+                            <h3 class='text-zinc-400 text-sm font-semibold font-sans text-uppercase'>Release Year:</h3>
                             <p class='text-white text-md font-normal'>:release_date</p>
                         </div>
-                        <h3 class='text-slate-100 text-lg font-normal font-sans'>:rental_rate</h3>
+                        <h3 class='text-zinc-100 text-lg font-normal font-sans'>:rental_rate</h3>
                     </div>
                 </div>
             </a>
