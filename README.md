@@ -4,6 +4,7 @@ This repository contains usage examples for Neurelo APIs. For examples for our S
 
 ### Examples
 
-| Language   | API           | Link                                       |
-| -----------| --------------| ------------------------------------------ |
-| Haskell    | OpenAPI       | [haskell-openapi](/haskell-openapi)        |
+| Language | API     | Link                                |
+| -------- | ------- | ----------------------------------- |
+| Haskell  | OpenAPI | [haskell-openapi](/haskell-openapi) |
+| PHP      | Guzzle  | [php-vanilla](/php/vanilla)         |
