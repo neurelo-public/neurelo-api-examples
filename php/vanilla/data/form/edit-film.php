@@ -11,7 +11,6 @@
     $error = null;
 
     if (is_null($id)) {
-        // Fix header already sent error
         header('LOCATION: /form/search-films.php');
         exit;
     }

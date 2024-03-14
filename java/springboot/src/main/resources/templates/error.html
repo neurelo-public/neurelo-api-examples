@@ -1,0 +1,19 @@
+<head th:replace="~{components/head :: head}"></head>
+
+<header th:replace="~{components/header :: header}"></header>
+
+<div
+  class="flex flex-col items-center justify-flex-start w-full h-full flex-1 py-6 gap-6"
+>
+  <h2 class="text-xl font-medium text-zinc-400 text-center">
+    Error Occurred On Server, Please go back and try again.
+  </h2>
+
+  <div
+    class="flex flex-col items-center justify-center w-full container gap-4 bg-zinc-950 border border-zinc-800 rounded-md py-6 px-4"
+  >
+    <p th:text="${errors}" class="text-base font-ligt text-zinc-400"></p>
+  </div>
+</div>
+
+<footer th:replace="~{components/footer :: footer}"></footer>

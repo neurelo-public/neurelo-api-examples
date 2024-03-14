@@ -1,0 +1,109 @@
+<head th:replace="~{components/head :: head}"></head>
+
+<header th:replace="~{components/header :: header}"></header>
+
+<div
+  class="flex flex-col items-center justify-flex-start w-full h-full flex-1 p-6 gap-6"
+>
+  <div class="w-full container flex flex-row items-center justify-between">
+    <h2 class="text-xl font-medium text-zinc-400 text-center">
+      Edit Film Page
+    </h2>
+
+    <a
+      href=""
+      onclick="window.history.go(-1); return false;"
+      class="no-underline text-base font-medium text-zinc-300 hover:text-zinc-100 flex gap-3 items-center justify-center px-3 py-1 bg-zinc-500/20 rounded-md border border-zinc-600 hover:bg-zinc-600/20 hover:border-zinc-600/70"
+    >
+      Go Back
+    </a>
+  </div>
+
+  <form
+    method="post"
+    th:action="'/edit-film/' + ${film.filmId}"
+    class="flex flex-col items-start justify-center w-full container gap-4 bg-zinc-950 border border-zinc-800 rounded-md py-6 px-4"
+  >
+    <p
+      th:text="'Film ID: ' + ${film.filmId}"
+      class="text-xl font-normal text-zinc-300 text-center w-full"
+    ></p>
+
+    <fieldset class="w-full flex flex-col gap-1">
+      <label for="title" class="text-base font-normal text-zinc-300"
+        >Title</label
+      >
+      <input
+        type="text"
+        name="title"
+        th:value="${film.title}"
+        class="w-full h-10 py-2 px-4 text-base font-light text-zinc-400 bg-zinc-800 rounded-md border border-zinc-800 focus:outline-none focus:ring-1 focus:ring-zinc-500 focus:border-zinc-500/70 placeholder-zinc-500/50 hover:border-zinc-500/70 hover:bg-zinc-800/20"
+      />
+    </fieldset>
+
+    <fieldset class="w-full flex flex-col gap-1">
+      <label
+        for="title"
+        class="text-base font-normal text-zinc-300"
+      >
+        Description
+      </label>
+      <textarea
+        type="text"
+        name="description"
+        th:text="${film.description}"
+        rows="4"
+        class="w-full py-2 px-4 text-base font-light text-zinc-400 bg-zinc-800 rounded-md border border-zinc-800 focus:outline-none focus:ring-1 focus:ring-zinc-500 focus:border-zinc-500/70 placeholder-zinc-500/50 hover:border-zinc-500/70 hover:bg-zinc-800/20"
+      >
+      </textarea>
+    </fieldset>
+
+    <div class="w-full grid grid-cols-2 gap-3 mt-2">
+      <fieldset class="w-full flex flex-col gap-1">
+        <label for="title" class="text-base font-normal text-zinc-300"
+          >Rental Rate</label
+        >
+        <input
+          type="number"
+          name="rentalRate"
+          step="0.01"
+          min="0.01"
+          max="100.00"
+          th:value="${film.rentalRate}"
+          class="w-full h-10 py-2 px-4 text-base font-light text-zinc-400 bg-zinc-800 rounded-md border border-zinc-800 focus:outline-none focus:ring-1 focus:ring-zinc-500 focus:border-zinc-500/70 placeholder-zinc-500/50 hover:border-zinc-500/70 hover:bg-zinc-800/20"
+        />
+      </fieldset>
+
+      <fieldset class="w-full flex flex-col gap-1">
+        <label for="title" class="text-base font-normal text-zinc-300"
+          >Last Update</label
+        >
+        <input
+          type="datetime"
+          readonly
+          disabled
+          name="rentalRate"
+          th:value="${film.lastUpdate}"
+          class="w-full h-10 py-2 px-4 text-base font-light text-zinc-400 bg-zinc-800 rounded-md border border-zinc-800 focus:outline-none focus:ring-1 focus:ring-zinc-500 focus:border-zinc-500/70 placeholder-zinc-500/50 hover:border-zinc-500/70 hover:bg-zinc-800/20"
+        />
+      </fieldset>
+    </div>
+
+    <div class="w-full flex felx-row items-center justify-between mt-2">
+      <button
+        type="reset"
+        class="text-base font-medium text-zinc-300 hover:text-zinc-100 flex gap-3 items-center justify-center px-3 py-1 bg-zinc-500/20 rounded-md border border-zinc-600 hover:bg-zinc-600/20 hover:border-zinc-600/70"
+      >
+        Reset
+      </button>
+      <button
+        type="submit"
+        class="px-3 py-1 gap-3 text-base font-medium text-sky-100 bg-sky-500/20 rounded-md border border-sky-400"
+      >
+        Save
+      </button>
+    </div>
+  </For>
+</div>
+
+<footer th:replace="~{components/footer :: footer}"></footer>
