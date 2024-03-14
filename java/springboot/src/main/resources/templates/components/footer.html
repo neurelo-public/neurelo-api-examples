@@ -1,44 +1,44 @@
 <footer
-  class="w-full py-6 px-4 border-t border-zinc-800 bg-zinc-950/50 backdrop-blur-sm z-10"
-  layout:fragment="footer"
+    class="w-full py-6 px-4 border-t border-zinc-800 bg-zinc-950/50 backdrop-blur-sm z-10"
+    layout:fragment="footer"
 >
-  <div
-    class="w-full container mx-auto flex flex-row items-center justify-between"
-  >
-    <a href="/">
-      <img
-        th:src="@{/images/neurelo.png}"
-        class="app-logo-small"
-        alt="Neurelo-logo"
-      />
-    </a>
+    <div
+        class="w-full container mx-auto flex flex-row items-center justify-between"
+    >
+        <a href="/">
+            <img
+                th:src="@{/images/neurelo.png}"
+                class="app-logo-small"
+                alt="Neurelo-logo"
+            />
+        </a>
 
-    <p>&copy; 2024 Neurelo. All rights reserved.</p>
+        <p>&copy; 2024 Neurelo. All rights reserved.</p>
 
-    <div class="flex flex-row flex-nowrap gap-4">
-      <a
-        href="/films"
-        class="no-underline text-sky-400 hover:text-sky-600 hover:underline"
-      >
-        View Films
-      </a>
+        <div class="flex flex-row flex-nowrap gap-4">
+            <a
+                href="/films"
+                class="no-underline text-sky-400 hover:text-sky-600 hover:underline"
+            >
+                View Films
+            </a>
+        </div>
     </div>
-  </div>
-  <script lang="javascript">
-    function formatAllDate() {
-      const allElements = document.getElementsByClassName("format-date");
-      if (allElements.length > 0) {
-        for (let i = 0; i < allElements.length; i++) {
-          const element = allElements.item(i);
+    <script lang="javascript">
+        function formatAllDate() {
+          const allElements = document.getElementsByClassName("format-date");
+          if (allElements.length > 0) {
+            for (let i = 0; i < allElements.length; i++) {
+              const element = allElements.item(i);
 
-          if (!!element) {
-            const formattedDate = new Date(element.innerHTML).toLocaleDateString();
-            element.innerHTML = formattedDate;
+              if (!!element) {
+                const formattedDate = new Date(element.innerHTML).toLocaleDateString();
+                element.innerHTML = formattedDate;
+              }
+            }
           }
         }
-      }
-    }
 
-    Window.onload = formatAllDate();
-  </script>
+        Window.onload = formatAllDate();
+    </script>
 </footer>

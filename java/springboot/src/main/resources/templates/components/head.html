@@ -1,69 +1,69 @@
 <head layout:fragment="head">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Neurelo</title>
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Neurelo</title>
 
-  <script src="http://localhost:35729/livereload.js"></script>
+    <script src="http://localhost:35729/livereload.js"></script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Tailwind Config -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {},
-        },
-      },
-    };
-  </script>
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {},
+                },
+            },
+        };
+    </script>
 
-  <!-- TailwindCss -->
-  <style lang="css">
-    html {
-      background-color: #000;
-    }
-  </style>
-  <style type="text/tailwindcss">
-    @layer utilities {
-      * {
-        @apply antialiased;
-
-        scrollbar-width: thin;
-        scrollbar-color: #52525b #27272a;
-
-        ::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
+    <!-- TailwindCss -->
+    <style lang="css">
+        html {
+            background-color: #000;
         }
+    </style>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            * {
+                @apply antialiased;
 
-        ::-webkit-scrollbar-thumb {
-          border-radius: 8px;
-        }
-      }
-      html {
-        @apply bg-zinc-950;
-      }
-      body {
-        @apply w-full h-full min-h-screen bg-fixed bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-zinc-100 relative
+                scrollbar-width: thin;
+                scrollbar-color: #52525b #27272a;
+
+                ::-webkit-scrollbar {
+                    width: 8px;
+                    height: 8px;
+                }
+
+                ::-webkit-scrollbar-thumb {
+                    border-radius: 8px;
+                }
+            }
+            html {
+                @apply bg-zinc-950;
+            }
+            body {
+                @apply w-full h-full min-h-screen bg-fixed bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-zinc-100 relative
             flex flex-col;
-      }
-      a,
-      button,
-      input,
-      select,
-      textarea {
-        @apply focus:outline-none focus-visible:ring-1 focus-visible:ring-zinc-500 focus-visible:border-zinc-500/70 hover:border-zinc-500/70
+            }
+            a,
+            button,
+            input,
+            select,
+            textarea {
+                @apply focus:outline-none focus-visible:ring-1 focus-visible:ring-zinc-500 focus-visible:border-zinc-500/70 hover:border-zinc-500/70
         rounded-sm;
-      }
-    }
+            }
+        }
 
-    .app-logo {
-      @apply w-[134px] h-8;
-    }
-    .app-logo-small {
-      @apply w-[84px] h-5;
-    }
-  </style>
+        .app-logo {
+            @apply w-[134px] h-8;
+        }
+        .app-logo-small {
+            @apply w-[84px] h-5;
+        }
+    </style>
 </head>

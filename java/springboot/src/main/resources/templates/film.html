@@ -3,61 +3,63 @@
 <header th:replace="~{components/header :: header}"></header>
 
 <div
-  class="flex flex-col items-center justify-flex-start w-full h-full flex-1 p-6 gap-6"
+    class="flex flex-col items-center justify-flex-start w-full h-full flex-1 p-6 gap-6"
 >
-  <div class="w-full container flex flex-row items-center justify-between">
-    <h2 class="text-xl font-medium text-zinc-400 text-center">
-      Film Details Page
-    </h2>
+    <div class="w-full container flex flex-row items-center justify-between">
+        <h2 class="text-xl font-medium text-zinc-400 text-center">
+            Film Details Page
+        </h2>
 
-    <a
-      th:href="'/edit-film/' + ${film.filmId}"
-      class="no-underline text-base font-medium text-zinc-300 hover:text-zinc-100 flex gap-3 items-center justify-center px-3 py-1 bg-zinc-500/20 rounded-md border border-zinc-600 hover:bg-zinc-600/20 hover:border-zinc-600/70"
-    >
-      Edit <span th:text="${film.filmId}"></span>
-      <svg
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        class="w-4 h-4 stroke-current"
-        viewBox="0 0 24 24"
-      >
-        <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5ZM15 5l4 4" />
-      </svg>
-    </a>
-  </div>
-
-  <div
-    class="flex flex-col items-start justify-center w-full container gap-4 bg-zinc-950 border border-zinc-800 rounded-md py-6 px-4"
-  >
-    <p
-      th:text="'Film ID: ' + ${film.filmId}"
-      class="text-xl font-normal text-zinc-300 text-center w-full"
-    ></p>
-
-    <h1
-      th:text="${film.title}"
-      class="text-2xl font-semibold text-zinc-100"
-    ></h1>
-
-    <p
-      th:text="${film.description}"
-      class="text-base font-ligt text-zinc-400"
-    ></p>
-
-    <div class="w-full flex felx-row items-center justify-between mt-2">
-      <p
-        th:text="'$' + ${film.rentalRate}"
-        class="text-base font-normal text-zinc-300"
-      ></p>
-      <p
-        th:text="${film.lastUpdate}"
-        class="text-base font-normal text-zinc-300 format-date"
-      ></p>
+        <a
+            th:href="'/edit-film/' + ${film.filmId}"
+            class="no-underline text-base font-medium text-zinc-300 hover:text-zinc-100 flex gap-3 items-center justify-center px-3 py-1 bg-zinc-500/20 rounded-md border border-zinc-600 hover:bg-zinc-600/20 hover:border-zinc-600/70"
+        >
+            Edit <span th:text="${film.filmId}"></span>
+            <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-4 h-4 stroke-current"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5ZM15 5l4 4"
+                />
+            </svg>
+        </a>
     </div>
-  </div>
+
+    <div
+        class="flex flex-col items-start justify-center w-full container gap-4 bg-zinc-950 border border-zinc-800 rounded-md py-6 px-4"
+    >
+        <p
+            th:text="'Film ID: ' + ${film.filmId}"
+            class="text-xl font-normal text-zinc-300 text-center w-full"
+        ></p>
+
+        <h1
+            th:text="${film.title}"
+            class="text-2xl font-semibold text-zinc-100"
+        ></h1>
+
+        <p
+            th:text="${film.description}"
+            class="text-base font-ligt text-zinc-400"
+        ></p>
+
+        <div class="w-full flex felx-row items-center justify-between mt-2">
+            <p
+                th:text="'$' + ${film.rentalRate}"
+                class="text-base font-normal text-zinc-300"
+            ></p>
+            <p
+                th:text="${film.lastUpdate}"
+                class="text-base font-normal text-zinc-300 format-date"
+            ></p>
+        </div>
+    </div>
 </div>
 
 <footer th:replace="~{components/footer :: footer}"></footer>

@@ -12,6 +12,7 @@ public class ApiConfig {
     public String getBaseUrl() {
         return baseUrl;
     }
+
     public void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
     }
@@ -19,6 +20,7 @@ public class ApiConfig {
     public String getKey() {
         return key;
     }
+
     public void setKey(String key) {
         this.key = key;
     }
