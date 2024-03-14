@@ -1,0 +1,1158 @@
+{
+    "objects": {
+        "auth": {
+            "properties": {
+                "updated_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "type": "string",
+                    "nullable": true,
+                    "default": {
+                        "value": "null"
+                    }
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "unique": true
+                },
+                "name": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string",
+                    "identifier": true
+                }
+            }
+        },
+        "actor": {
+            "properties": {
+                "actor_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "film_actor": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/film_actor"
+                    }
+                },
+                "first_name": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        45
+                    ]
+                },
+                "last_name": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        45
+                    ]
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                }
+            },
+            "constraints": [
+                {
+                    "type": "index",
+                    "property": [
+                        "last_name"
+                    ],
+                    "sourceName": "idx_actor_last_name"
+                }
+            ]
+        },
+        "address": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        50
+                    ]
+                },
+                "address2": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        50
+                    ],
+                    "nullable": true
+                },
+                "address_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "city": {
+                    "$ref": "#/objects/city",
+                    "relation": {
+                        "attrKey": [
+                            "city_id"
+                        ],
+                        "foreignAttrKey": [
+                            "city_id"
+                        ],
+                        "sourceName": "fk_address_city",
+                        "onUpdate": "NoAction",
+                        "onDelete": "NoAction"
+                    }
+                },
+                "city_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "customer": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/customer"
+                    }
+                },
+                "district": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        20
+                    ]
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                },
+                "phone": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        20
+                    ]
+                },
+                "postal_code": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        10
+                    ],
+                    "nullable": true
+                },
+                "staff": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/staff"
+                    }
+                },
+                "store": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/store"
+                    }
+                }
+            },
+            "constraints": [
+                {
+                    "type": "index",
+                    "property": [
+                        "city_id"
+                    ],
+                    "sourceName": "idx_fk_city_id"
+                }
+            ]
+        },
+        "category": {
+            "properties": {
+                "category_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "film_category": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/film_category"
+                    }
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        25
+                    ]
+                }
+            }
+        },
+        "city": {
+            "properties": {
+                "address": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/address"
+                    }
+                },
+                "city": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        50
+                    ]
+                },
+                "city_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "country": {
+                    "$ref": "#/objects/country",
+                    "relation": {
+                        "attrKey": [
+                            "country_id"
+                        ],
+                        "foreignAttrKey": [
+                            "country_id"
+                        ],
+                        "sourceName": "fk_city",
+                        "onUpdate": "NoAction",
+                        "onDelete": "NoAction"
+                    }
+                },
+                "country_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                }
+            },
+            "constraints": [
+                {
+                    "type": "index",
+                    "property": [
+                        "country_id"
+                    ],
+                    "sourceName": "idx_fk_country_id"
+                }
+            ]
+        },
+        "country": {
+            "properties": {
+                "city": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/city"
+                    }
+                },
+                "country": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        50
+                    ]
+                },
+                "country_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                }
+            }
+        },
+        "customer": {
+            "properties": {
+                "random": {
+                    "type": "string"
+                },
+                "active": {
+                    "type": "integer",
+                    "nullable": true
+                },
+                "activebool": {
+                    "type": "boolean",
+                    "default": {
+                        "value": true
+                    }
+                },
+                "address": {
+                    "$ref": "#/objects/address",
+                    "relation": {
+                        "attrKey": [
+                            "address_id"
+                        ],
+                        "foreignAttrKey": [
+                            "address_id"
+                        ]
+                    }
+                },
+                "address_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "create_date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": "Date",
+                    "default": {
+                        "function": "dbgenerated",
+                        "rawDbValue": "('now'::text)::date"
+                    }
+                },
+                "customer_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "email": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        50
+                    ],
+                    "nullable": true
+                },
+                "first_name": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        45
+                    ]
+                },
+                "last_name": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        45
+                    ]
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    },
+                    "nullable": true
+                },
+                "payment": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/payment"
+                    }
+                },
+                "rental": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/rental"
+                    }
+                },
+                "store_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                }
+            },
+            "constraints": [
+                {
+                    "type": "index",
+                    "property": [
+                        "address_id"
+                    ],
+                    "sourceName": "idx_fk_address_id"
+                },
+                {
+                    "type": "index",
+                    "property": [
+                        "store_id"
+                    ],
+                    "sourceName": "idx_fk_store_id"
+                },
+                {
+                    "type": "index",
+                    "property": [
+                        "last_name"
+                    ],
+                    "sourceName": "idx_last_name"
+                }
+            ]
+        },
+        "film": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "nullable": true
+                },
+                "film_actor": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/film_actor"
+                    }
+                },
+                "film_category": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/film_category"
+                    }
+                },
+                "film_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "inventory": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/inventory"
+                    }
+                },
+                "language": {
+                    "$ref": "#/objects/language",
+                    "relation": {
+                        "attrKey": [
+                            "language_id"
+                        ],
+                        "foreignAttrKey": [
+                            "language_id"
+                        ]
+                    }
+                },
+                "language_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                },
+                "length": {
+                    "type": "integer",
+                    "sourceType": "SmallInt",
+                    "nullable": true
+                },
+                "rating": {
+                    "default": {
+                        "value": "G"
+                    },
+                    "nullable": true,
+                    "$ref": "#/enums/mpaa_rating"
+                },
+                "release_year": {
+                    "type": "integer",
+                    "nullable": true
+                },
+                "rental_duration": {
+                    "type": "integer",
+                    "sourceType": "SmallInt",
+                    "default": {
+                        "value": 3
+                    }
+                },
+                "rental_rate": {
+                    "type": "string",
+                    "format": "decimal",
+                    "sourceType": [
+                        "Decimal",
+                        4,
+                        2
+                    ],
+                    "default": {
+                        "value": "4.99"
+                    }
+                },
+                "replacement_cost": {
+                    "type": "string",
+                    "format": "decimal",
+                    "sourceType": [
+                        "Decimal",
+                        5,
+                        2
+                    ],
+                    "default": {
+                        "value": "19.99"
+                    }
+                },
+                "special_features": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "title": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        255
+                    ]
+                }
+            },
+            "constraints": [
+                {
+                    "type": "index",
+                    "property": [
+                        "language_id"
+                    ],
+                    "sourceName": "idx_fk_language_id"
+                },
+                {
+                    "type": "index",
+                    "property": [
+                        "title"
+                    ],
+                    "sourceName": "idx_title"
+                }
+            ]
+        },
+        "film_actor": {
+            "properties": {
+                "actor": {
+                    "$ref": "#/objects/actor",
+                    "relation": {
+                        "attrKey": [
+                            "actor_id"
+                        ],
+                        "foreignAttrKey": [
+                            "actor_id"
+                        ]
+                    }
+                },
+                "actor_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "film": {
+                    "$ref": "#/objects/film",
+                    "relation": {
+                        "attrKey": [
+                            "film_id"
+                        ],
+                        "foreignAttrKey": [
+                            "film_id"
+                        ]
+                    }
+                },
+                "film_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                }
+            },
+            "constraints": [
+                {
+                    "type": "identifier",
+                    "property": [
+                        "actor_id",
+                        "film_id"
+                    ]
+                },
+                {
+                    "type": "index",
+                    "property": [
+                        "film_id"
+                    ],
+                    "sourceName": "idx_fk_film_id"
+                }
+            ]
+        },
+        "film_category": {
+            "properties": {
+                "category": {
+                    "$ref": "#/objects/category",
+                    "relation": {
+                        "attrKey": [
+                            "category_id"
+                        ],
+                        "foreignAttrKey": [
+                            "category_id"
+                        ]
+                    }
+                },
+                "category_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "film": {
+                    "$ref": "#/objects/film",
+                    "relation": {
+                        "attrKey": [
+                            "film_id"
+                        ],
+                        "foreignAttrKey": [
+                            "film_id"
+                        ]
+                    }
+                },
+                "film_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                }
+            },
+            "constraints": [
+                {
+                    "type": "identifier",
+                    "property": [
+                        "film_id",
+                        "category_id"
+                    ]
+                }
+            ]
+        },
+        "inventory": {
+            "properties": {
+                "film": {
+                    "$ref": "#/objects/film",
+                    "relation": {
+                        "attrKey": [
+                            "film_id"
+                        ],
+                        "foreignAttrKey": [
+                            "film_id"
+                        ]
+                    }
+                },
+                "film_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "inventory_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                },
+                "rental": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/rental"
+                    }
+                },
+                "store_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                }
+            },
+            "constraints": [
+                {
+                    "type": "index",
+                    "property": [
+                        "store_id",
+                        "film_id"
+                    ],
+                    "sourceName": "idx_store_id_film_id"
+                }
+            ]
+        },
+        "language": {
+            "properties": {
+                "film": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/film"
+                    }
+                },
+                "language_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "sourceType": [
+                        "Char",
+                        20
+                    ]
+                }
+            }
+        },
+        "payment": {
+            "properties": {
+                "amount": {
+                    "type": "string",
+                    "format": "decimal",
+                    "sourceType": [
+                        "Decimal",
+                        5,
+                        2
+                    ]
+                },
+                "customer": {
+                    "$ref": "#/objects/customer",
+                    "relation": {
+                        "attrKey": [
+                            "customer_id"
+                        ],
+                        "foreignAttrKey": [
+                            "customer_id"
+                        ]
+                    }
+                },
+                "customer_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "payment_date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ]
+                },
+                "payment_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "rental": {
+                    "$ref": "#/objects/rental",
+                    "relation": {
+                        "attrKey": [
+                            "rental_id"
+                        ],
+                        "foreignAttrKey": [
+                            "rental_id"
+                        ],
+                        "onDelete": "SetNull"
+                    }
+                },
+                "rental_id": {
+                    "type": "integer"
+                },
+                "staff": {
+                    "$ref": "#/objects/staff",
+                    "relation": {
+                        "attrKey": [
+                            "staff_id"
+                        ],
+                        "foreignAttrKey": [
+                            "staff_id"
+                        ]
+                    }
+                },
+                "staff_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                }
+            },
+            "constraints": [
+                {
+                    "type": "index",
+                    "property": [
+                        "customer_id"
+                    ],
+                    "sourceName": "idx_fk_customer_id"
+                },
+                {
+                    "type": "index",
+                    "property": [
+                        "rental_id"
+                    ],
+                    "sourceName": "idx_fk_rental_id"
+                },
+                {
+                    "type": "index",
+                    "property": [
+                        "staff_id"
+                    ],
+                    "sourceName": "idx_fk_staff_id"
+                }
+            ]
+        },
+        "rental": {
+            "properties": {
+                "customer": {
+                    "$ref": "#/objects/customer",
+                    "relation": {
+                        "attrKey": [
+                            "customer_id"
+                        ],
+                        "foreignAttrKey": [
+                            "customer_id"
+                        ]
+                    }
+                },
+                "customer_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "inventory": {
+                    "$ref": "#/objects/inventory",
+                    "relation": {
+                        "attrKey": [
+                            "inventory_id"
+                        ],
+                        "foreignAttrKey": [
+                            "inventory_id"
+                        ]
+                    }
+                },
+                "inventory_id": {
+                    "type": "integer"
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                },
+                "payment": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/payment"
+                    }
+                },
+                "rental_date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ]
+                },
+                "rental_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "return_date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "nullable": true
+                },
+                "staff": {
+                    "$ref": "#/objects/staff",
+                    "relation": {
+                        "attrKey": [
+                            "staff_id"
+                        ],
+                        "foreignAttrKey": [
+                            "staff_id"
+                        ],
+                        "sourceName": "rental_staff_id_key",
+                        "onUpdate": "NoAction",
+                        "onDelete": "NoAction"
+                    }
+                },
+                "staff_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                }
+            },
+            "constraints": [
+                {
+                    "type": "index",
+                    "property": [
+                        "inventory_id"
+                    ],
+                    "sourceName": "idx_fk_inventory_id"
+                },
+                {
+                    "type": "unique",
+                    "property": [
+                        "rental_date",
+                        "inventory_id",
+                        "customer_id"
+                    ],
+                    "sourceName": "idx_unq_rental_rental_date_inventory_id_customer_id"
+                }
+            ]
+        },
+        "staff": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "default": {
+                        "value": true
+                    }
+                },
+                "address": {
+                    "$ref": "#/objects/address",
+                    "relation": {
+                        "attrKey": [
+                            "address_id"
+                        ],
+                        "foreignAttrKey": [
+                            "address_id"
+                        ]
+                    }
+                },
+                "address_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "email": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        50
+                    ],
+                    "nullable": true
+                },
+                "first_name": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        45
+                    ]
+                },
+                "last_name": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        45
+                    ]
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        40
+                    ],
+                    "nullable": true
+                },
+                "payment": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/payment"
+                    }
+                },
+                "picture": {
+                    "type": "string",
+                    "format": "bytes",
+                    "nullable": true
+                },
+                "rental": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/objects/rental"
+                    }
+                },
+                "staff_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                },
+                "store": {
+                    "nullable": true,
+                    "$ref": "#/objects/store"
+                },
+                "store_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "username": {
+                    "type": "string",
+                    "sourceType": [
+                        "VarChar",
+                        16
+                    ]
+                }
+            }
+        },
+        "store": {
+            "properties": {
+                "address": {
+                    "$ref": "#/objects/address",
+                    "relation": {
+                        "attrKey": [
+                            "address_id"
+                        ],
+                        "foreignAttrKey": [
+                            "address_id"
+                        ]
+                    }
+                },
+                "address_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt"
+                },
+                "last_update": {
+                    "type": "string",
+                    "format": "date-time",
+                    "sourceType": [
+                        "Timestamp",
+                        6
+                    ],
+                    "default": {
+                        "function": "now"
+                    }
+                },
+                "manager_staff_id": {
+                    "type": "integer",
+                    "sourceType": "SmallInt",
+                    "unique": true
+                },
+                "staff": {
+                    "$ref": "#/objects/staff",
+                    "relation": {
+                        "attrKey": [
+                            "manager_staff_id"
+                        ],
+                        "foreignAttrKey": [
+                            "staff_id"
+                        ]
+                    }
+                },
+                "store_id": {
+                    "type": "integer",
+                    "default": {
+                        "function": "autoincrement"
+                    },
+                    "identifier": true
+                }
+            }
+        }
+    },
+    "enums": {
+        "mpaa_rating": [
+            "G",
+            "PG",
+            "PG_13",
+            "R",
+            "NC_17"
+        ]
+    }
+}

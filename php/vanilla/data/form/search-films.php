@@ -96,24 +96,6 @@ if (is_null($response->content)) {
         </div>";
 
         foreach ($json_decoded["data"] as $film) {
-            /**
-             * {
-             *      "description": "A Epic Drama of a Feminist And a Mad Scientist who must Battle a",
-             *      "film_id": 1,
-             *      "language_id": 1,
-             *      "last_update": "2024-02-29T01:57:37.808Z",
-             *      "length": 86,
-             *      "release_year": 2006,
-             *      "rental_duration": 6,
-             *      "rental_rate": "80.99",
-             *      "replacement_cost": "20.99",
-             *      "special_features": [
-             *          "Deleted Scenes",
-             *          "Behind the Scenes"
-             *      ],
-             *      "title": "Academy Dinosaur edit 1"
-             *  }
-             */
             echo strtr($film_card_template, [
                 ':url' => "/form/edit-film.php?id=".$film["film_id"],
                 ':title' => $film["title"],
