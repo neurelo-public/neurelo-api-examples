@@ -7,5 +7,6 @@ This repository contains usage examples for Neurelo APIs. For examples for our S
 | Language | API     | Link                                |
 | -------- | ------- | ----------------------------------- |
 | Haskell  | OpenAPI | [haskell-openapi](/haskell-openapi) |
-| PHP      | REST    | [php-vanilla](/php/vanilla)         |
+| Php      | REST    | [php-vanilla](/php/vanilla)         |
 | Rust     | REST    | [rust-rest-api](/rust-rest-api)     |
+| Java     | REST    | [java-springboot](/java/springboot) |
