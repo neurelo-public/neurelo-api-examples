@@ -1,0 +1,90 @@
+{
+  "objects": {
+    "doctors": {
+      "properties": {
+        "work_location": {
+          "$ref": "#/objects/clinics",
+          "relation": {
+            "foreignAttrKey": "clinic_id",
+            "attrKey": "doctor_id"
+          },
+          "nullable": true
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "doctor_id": {
+          "type": "string",
+          "identifier": true,
+          "sourceType": "ObjectId",
+          "sourceName": "_id",
+          "default": {
+            "function": "auto"
+          }
+        }
+      }
+    },
+    "clinics": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "patients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/objects/pets"
+          },
+          "nullable": true
+        },
+        "clinic_id": {
+          "type": "string",
+          "identifier": true,
+          "sourceType": "ObjectId",
+          "sourceName": "_id",
+          "default": {
+            "function": "auto"
+          }
+        },
+        "employees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/objects/doctors"
+          }
+        }
+      }
+    },
+    "pets": {
+      "properties": {
+        "patient_at": {
+          "$ref": "#/objects/clinics",
+          "relation": {
+            "attrKey": "pet_id",
+            "foreignAttrKey": "clinic_id"
+          },
+          "nullable": true
+        },
+        "age": {
+          "type": "integer"
+        },
+        "species": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pet_id": {
+          "type": "string",
+          "sourceType": "ObjectId",
+          "identifier": true,
+          "sourceName": "_id",
+          "default": {
+            "function": "auto"
+          }
+        }
+      }
+    }
+  }
+}
