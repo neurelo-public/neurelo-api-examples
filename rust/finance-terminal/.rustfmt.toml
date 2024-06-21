@@ -1,0 +1,13 @@
+binop_separator = "Back"
+comment_width = 100
+condense_wildcard_suffixes = true
+error_on_line_overflow = false
+format_strings = true
+normalize_comments = true
+use_try_shorthand = true
+wrap_comments = true
+imports_layout = "HorizontalVertical"
+imports_granularity = "crate"
+max_width = 100
+fn_call_wdith = 100
+attr_fn_like_width = 100

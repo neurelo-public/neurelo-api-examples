@@ -1,0 +1,72 @@
+[
+  {
+    "company_name": "Weyland-Yutani Corporation",
+    "ticker_symbol": "WLYC",
+    "share_price": 52.41,
+    "volatility": 2,
+    "trend": 0.02
+  },
+  {
+    "company_name": "Umbrella Corporation",
+    "ticker_symbol": "UMBC",
+    "share_price": 88.20,
+    "volatility": 3,
+    "trend": 0.03
+  },
+  {
+    "company_name": "Cyberdyne Systems",
+    "ticker_symbol": "CYBS",
+    "share_price": 125.75,
+    "volatility": 2,
+    "trend": 0.03
+  },
+  {
+    "company_name": "Oscorp Industries",
+    "ticker_symbol": "OSCP",
+    "share_price": 69.99,
+    "volatility": 1,
+    "trend": 0.01
+  },
+  {
+    "company_name": "Spectre",
+    "ticker_symbol": "SPCT",
+    "share_price": 150.00,
+    "volatility": 1,
+    "trend": 0.05
+  },
+  {
+    "company_name": "Tyrell Corporation",
+    "ticker_symbol": "TYRC",
+    "share_price": 204.50,
+    "volatility": 1,
+    "trend": 0.10
+  },
+  {
+    "company_name": "InGen",
+    "ticker_symbol": "IGEN",
+    "share_price": 182.30,
+    "volatility": 1,
+    "trend": 0.05
+  },
+  {
+    "company_name": "Aperture Science",
+    "ticker_symbol": "APSC",
+    "share_price": 300.25,
+    "volatility": 1,
+    "trend": 0.05
+  },
+  {
+    "company_name": "Omni Consumer Products (OCP)",
+    "ticker_symbol": "OCPC",
+    "share_price": 95.60,
+    "volatility": 2,
+    "trend": -0.01
+  },
+  {
+    "company_name": "LexCorp",
+    "ticker_symbol": "LEXC",
+    "share_price": 77.88,
+    "volatility": 1,
+    "trend": -0.05
+  }
+]
