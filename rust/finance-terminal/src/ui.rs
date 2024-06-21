@@ -5,6 +5,7 @@ use ratatui::{
 };
 
 use crate::app::App;
+use crate::api::Action;
 
 pub fn draw(f: &mut Frame, app: &mut App) {
     let chunks = Layout::vertical([Constraint::Length(3), Constraint::Min(0)]).split(f.size());
@@ -117,9 +118,9 @@ fn draw_charts(f: &mut Frame, app: &mut App, area: Rect) {
 
             // Draw logs
             let info_style = Style::default().fg(Color::Blue);
-            let warning_style = Style::default().fg(Color::Yellow);
+            let _warning_style = Style::default().fg(Color::Yellow);
             let error_style = Style::default().fg(Color::Magenta);
-            let critical_style = Style::default().fg(Color::Red);
+            let _critical_style = Style::default().fg(Color::Red);
             let logs: Vec<ListItem> = app
                 .logs
                 .items
@@ -129,7 +130,7 @@ fn draw_charts(f: &mut Frame, app: &mut App, area: Rect) {
                     let value = trade.price * trade.quantity as f32;
 
                     let s = match action {
-                        _Sell => error_style,
+                        Action::Sell => error_style,
                         _ => info_style,
                     };
                     let content = vec![text::Line::from(vec![

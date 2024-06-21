@@ -77,7 +77,7 @@ async fn handle_single_command(client: Client, command: SingleCommand) -> Result
 async fn handle_interactive(
     cli: Cli,
     client: Client,
-    terminal: TerminalObject,
+    _terminal: TerminalObject,
 ) -> Result<(), Box<dyn std::error::Error>> {
     let tick_rate = Duration::from_millis(cli.tick_rate);
     crate::ct::run(tick_rate, client, cli.enhanced_graphics).await?;

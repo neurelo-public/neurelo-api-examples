@@ -1,7 +1,6 @@
 use std::fmt::Debug;
 
 use chrono::{DateTime, Utc};
-use clap::Args;
 use serde::{de::IgnoredAny, Deserialize, Serialize};
 
 use crate::api::Action;

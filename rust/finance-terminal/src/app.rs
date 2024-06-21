@@ -15,7 +15,7 @@ use crate::{
     sample::{MockPortfolio, MockSecurity},
     Data, Model, Response,
 };
-use std::{error::Error, fs::File, io::BufReader};
+use std::{fs::File, io::BufReader};
 
 const EVENTS: [(&str, u64); 24] = [
     ("B1", 9),
@@ -452,8 +452,8 @@ impl<'a> App<'a> {
         self.sparkline.on_tick();
         self.signals.on_tick();
 
-        self.make_trades().await;
-        self.refresh_portfolios().await;
+        let _ = self.make_trades().await;
+        let _ = self.refresh_portfolios().await;
 
         let p_idx = self
             .portfolios
