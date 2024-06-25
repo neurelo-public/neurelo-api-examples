@@ -1,0 +1,128 @@
+{
+  "objects": {
+    "portfolio": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "This is a human-readable name for the portfolio. This would be considered a 'required' field in the API since it is not Nullable and not Auto-Generated and/or Default."
+        },
+        "id": {
+          "type": "string",
+          "identifier": true,
+          "sourceName": "_id",
+          "sourceType": "ObjectId",
+          "default": {
+            "function": "auto"
+          },
+          "description": "Primary Key identifier for the entity. It is not necessary to provide when creating the entity because it is automatically generated"
+        },
+        "trade_ref": {
+          "type": "array",
+          "items": {
+            "$ref": "#/objects/trade"
+          }
+        }
+      }
+    },
+    "security": {
+      "properties": {
+        "ticker_symbol": {
+          "type": "string",
+          "description": "This is a human-readable ticker symbol for the company. This would be considered a 'required' field in the API since it is not Nullable and not Auto-Generated and/or Default."
+        },
+        "company_name": {
+          "type": "string",
+          "description": "This is a human-readable name for the company. This would be considered a 'required' field in the API since it is not Nullable and not Auto-Generated and/or Default."
+        },
+        "id": {
+          "type": "string",
+          "identifier": true,
+          "sourceName": "_id",
+          "sourceType": "ObjectId",
+          "default": {
+            "function": "auto"
+          },
+          "description": "Primary Key identifier for the entity. It is not necessary to provide when creating the entity because it is automatically generated"
+        },
+        "trade_ref": {
+          "type": "array",
+          "items": {
+            "$ref": "#/objects/trade"
+          }
+        }
+      }
+    },
+    "trade": {
+      "properties": {
+        "action": {
+          "$ref": "#/enums/ACTION"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "default": {
+            "function": "now"
+          },
+          "description": "This is the date the trade was executed, as it was created in the database as defined by the default function value."
+        },
+        "price": {
+          "type": "number",
+          "format": "float",
+          "description": "This is the total price of the trade as defined by the share price & quantity. This would be considered a 'required' field in the API since it is not Nullable and not Auto-Generated and/or Default."
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "This is the total number of shares of a Security traded in the transaction. This would be considered a 'required' field in the API since it is not Nullable and not Auto-Generated and/or Default."
+        },
+        "id": {
+          "type": "string",
+          "identifier": true,
+          "sourceName": "_id",
+          "sourceType": "ObjectId",
+          "default": {
+            "function": "auto"
+          },
+          "description": "Primary Key identifier for the entity. It is not necessary to provide when creating the entity because it is automatically generated"
+        },
+        "portfolio_id": {
+          "type": "string",
+          "sourceType": "ObjectId",
+          "description": "This is the ID of the Portfolio object which the Trade is being executed on behalf of. This is the 'Source' identifier of a Many-To-One' relationship."
+        },
+        "portfolio_ref": {
+          "$ref": "#/objects/portfolio",
+          "relation": {
+            "attrKey": [
+              "portfolio_id"
+            ],
+            "foreignAttrKey": [
+              "id"
+            ]
+          }
+        },
+        "security_id": {
+          "type": "string",
+          "sourceType": "ObjectId",
+          "description": "This is the ID of the Security object whose shares were purchased during a Trade. This is the 'Source' identifier of a Many-To-One' relationship."
+        },
+        "security_ref": {
+          "$ref": "#/objects/security",
+          "relation": {
+            "attrKey": [
+              "security_id"
+            ],
+            "foreignAttrKey": [
+              "id"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "enums": {
+    "ACTION": [
+      "Sell",
+      "Buy"
+    ]
+  }
+}
